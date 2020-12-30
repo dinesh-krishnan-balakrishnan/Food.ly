@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: orange;
+    height: 100px;
+    box-shadow: 5px 10px 8px #888888;
+}
+
+h1 {
+    position: relative;
+    bottom: 30px;
+    color: black;
+    font-family: 'Pacifico', cursive;
+    font-size: 250%;
+}
+
+span {
+    color: cadetblue;
+    font-size: 180%;
+}
+   
+div {
+    position: relative;
+    top: 20px;
+    background: white;
+    height: 30px;
+    border-radius: 40px;
+    padding: 10px;
+}
+
+input {
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    color: black;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 16px;
+    transition: 0.4s;
+    line-height: 30px;
+    width: 360px;
+    padding: 0 6px;
+}
+
+a {
+    color: black;
+    background: white;
+    float: right;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+    cursor: pointer;
+}
+   
+div:hover > a {
+    background: black;
+    color: white;
+} 

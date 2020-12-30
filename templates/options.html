@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+   <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='navigation.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='options.css') }}">
+        <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+        <title>Food.ly</title>
+   </head>
+
+   <body>
+       <nav>
+            <h1>Food<span>.</span>ly</h1>
+
+            <div>
+                <input type="text" id="search" placeholder="Recipe Name..."/>
+                <a onclick="redirect()"> <i class="fas fa-search"></i> </a>
+            </div>
+       </nav>
+
+       <article>
+           {% for recipe in recipes %}
+                <section id="{{ recipe.link }}" onclick="selectRecipe(this)">
+                    <img src="{{ recipe.img }}" alt="Image of Dish">
+                    <h2>{{ recipe.header }}</h2>
+                    <hr>
+                    <h3>{{ recipe.creator }}</h3>
+                    <br>
+                    <h4>{{ recipe.rating }} / 5 from {{ recipe.ratingCount }} Ratings</h2>
+                    <h5>{{ recipe.timeText }}</h2>
+                </section>
+           {% endfor %}
+       </article>
+   </body>
+
+   <script>
+        function redirect() {
+             domain = window.location.href;
+             search = '/../'
+             recipe = document.getElementById('search').value;
+ 
+             window.location = domain + search + recipe;
+        }
+
+        function selectRecipe(element) {
+            domain = window.location.href;
+            search = '/../../recipe/'
+            recipe = element.id;
+ 
+            window.location = domain + search + recipe;
+        }
+    </script>
+</html>

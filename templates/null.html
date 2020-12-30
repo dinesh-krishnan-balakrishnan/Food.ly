@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+   <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='navigation.css') }}">
+        <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+        <title>Food.ly</title>
+   </head>
+
+   <style>
+       @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+        article {
+            position: relative;
+            top: 150px;
+        }
+
+        article span {
+            float: left;
+            margin: 0 0 0 5%;
+        }
+
+        article h2 {
+            position: relative;
+            top: 60px;
+            float: right;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 100px;
+            margin: 0 5% 0 0;
+        }
+   </style>
+
+   <body>
+       <nav>
+            <h1>Food<span>.</span>ly</h1>
+
+            <div>
+                <input type="text" id="search" placeholder="Recipe Name..."/>
+                <a onclick="redirect()"> <i class="fas fa-search"></i> </a>
+            </div>
+        </nav>
+
+        <article>
+            <span><i class="fas fa-times-circle fa-10x"></i></span>
+            <h2>No recipes found!</h2>
+        </article>
+   </body>
+
+   <script>
+        function redirect() {
+             domain = window.location.href;
+             search = '/../'
+             recipe = document.getElementById('search').value;
+ 
+             window.location = domain + search + recipe;
+        }
+    </script>
+</html>

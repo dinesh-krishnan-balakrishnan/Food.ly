@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+   <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='navigation.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='recipe.css') }}">
+        <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+        <title>Food.ly</title>
+   </head>
+
+   <body>
+       <nav>
+            <h1>Food<span>.</span>ly</h1>
+
+            <div>
+                <input type="text" id="search" placeholder="Recipe Name..."/>
+                <a onclick="redirect()"> <i class="fas fa-search"></i> </a>
+            </div>
+        </nav>
+
+        <aside>
+            <img src="{{ image }}" alt="Completed Dish">
+            <h2>{{ title }}</h2>
+        </aside>
+
+        <article>
+            <form id='ingredients'>
+                <h3>Ingredients:</h3>
+                {% for ingredient in ingredients %}
+                    {% if ingredient.type == 'h6' %}
+                        <legend>{{ ingredient.content }}</legend>
+                    {% else %}
+                        <label>{{ ingredient.content }}
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    {% endif %}
+                {% endfor %}
+            </form>
+
+            <form id='directions'>
+                <h3>Directions:</h3>
+                {% for step in steps %}
+                    <label>
+                        <span id='number'>{{ loop.index }}.</span> {{ step }}
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                {% endfor %}
+            </form>
+        </article>
+       
+   </body>
+
+   <script>
+        function redirect() {
+             domain = window.location.href.replace(/recipe[\/\-a-z0-9]*/i, '');
+             search = 'search/'
+             recipe = document.getElementById('search').value;
+ 
+             window.location = domain + search + recipe;
+        }
+    </script>
+</html>
